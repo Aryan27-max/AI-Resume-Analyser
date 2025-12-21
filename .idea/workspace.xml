@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0355e42b-ce2b-44bd-9bf8-707977fe8a2f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/FileUploader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/upload.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1765978495804</updated>
       <workItem from="1765978496923" duration="24985000" />
-      <workItem from="1766225210734" duration="21734000" />
+      <workItem from="1766225210734" duration="24657000" />
     </task>
     <servers />
   </component>
