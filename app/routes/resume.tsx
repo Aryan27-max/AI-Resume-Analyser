@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import ATS from "~/components/feebdack/ATS";
-import Details from "~/components/feebdack/Details";
-import Summary from "~/components/feebdack/Summary";
+import ATS from "~/components/feedback/ATS";
+import Details from "~/components/feedback/Details";
+import Summary from "~/components/feedback/Summary";
 import { usePuterStore } from "~/lib/puter";
 import type { Route } from "./+types/resume";
 
