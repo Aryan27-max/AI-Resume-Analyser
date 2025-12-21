@@ -3,6 +3,8 @@ import Navbar from "~/components/Navbar";
 import FileUploader from "~/components/FileUploader";
 import {usePuterStore} from "~/lib/puter";
 import {useNavigate} from "react-router";
+import {convertPdfToImage} from "~/lib/pdf2img"
+import {generateUUID} from "~/lib/utils"
 
 
 const Upload = () => {
@@ -10,7 +12,7 @@ const Upload = () => {
     const navigate = useNavigate();
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');
-    const [file, setFile] = useState<File | null>(null)
+    const [file, setFile] = useState<File | null>(null);
 
     const handleFileSelect = (file: File | null) => {
         setFile(file)
@@ -29,12 +31,37 @@ const Upload = () => {
             file: File }) => {
                 setIsProcessing(true);
                 setStatusText('Uploading the file...');
-                const uploadedFIle = await fs.upload([file]);
+                const uploadedFile = await fs.upload([file]);
 
-                if(!uploadedFIle)return setStatusText('Error: failed to upload');
+                if(!uploadedFile)return setStatusText('Error: failed to upload');
 
                 setStatusText('Converting to image...');
-                const imageFile = await convertPDFToImage(file);
+                const imageFile = await convertPdfToImage(file);
+                if(!imageFile.file) return setStatusText('Error: failed to convert PDF to image');
+
+                setStatusText('Uploading the image...');
+                const uploadedImage = await fs.upload([imageFile.file]);
+                if(!uploadedImage) return setStatusText('Error: failed to upload image');
+
+                setStatusText('Preparing data...');
+
+                const uuid = generateUUID();
+                const data = {
+                    id: uuid,
+                    resumePath: uploadedFile.path,
+                    imagPath: uploadedImage.path,
+                    companyName, jobTitle, jobDescription,
+                    feedback: '',
+                }
+                await kv.set(`resume:${uuid}`, JSON.stringify(data));
+
+                setStatusText('Analysing...');
+
+                const = await ai.feedback(
+                    uploadedFile.path,
+
+
+            );
         }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
